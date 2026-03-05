@@ -41,7 +41,7 @@ El payload emula un teclado USB para:
 6. Set-MpPreference -DisableRealtimeMonitoring $true
 7. LED encendido (indicador visual)
 
-## 🎯 Objetivos del Proyecto
+## Objetivos del Proyecto
 
 - ✅ Demostrar que **acceso físico = compromiso total** en segundos
 - ✅ Evadir defensas de software mediante emulación de teclado
@@ -104,7 +104,7 @@ Este ataque demuestra un principio fundamental en ciberseguridad:
 | Librería | DigiKeyboard.h |
 | Target | Windows 10 / 11 (para pruebas) |
 
-## 🚀 Instalación y Uso
+## Instalación y Uso
 
 ### Configurar entorno Arduino para Digispark
 
