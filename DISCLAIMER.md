@@ -1,3 +1,5 @@
+🇪🇸 **Español** | 🇬🇧 [English](DISCLAIMER-EN.md)
+
 # AVISO LEGAL Y ÉTICO
 
 ## ADVERTENCIA IMPORTANTE
