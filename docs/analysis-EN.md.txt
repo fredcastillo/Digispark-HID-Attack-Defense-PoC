@@ -1,0 +1,24 @@
+🇬🇧 **English** | 🇪🇸 [Español](analysis.md)
+
+# Technical and Forensic Analysis
+
+## Forensic Artifacts (DFIR)
+
+This attack leaves identifiable traces in Windows systems:
+
+### 1. UserAssist (Registry)
+Location: `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{GUID}\Count`
+
+Key characteristics:
+- Program names are encoded in **ROT13**
+- `powershell.exe` appears as `cbjrefuryy.rkr`
+- Includes execution count and timestamp
+
+### 2. Event ID 4688 (Process Creation)
+Records when `powershell.exe` is created as a child process of `explorer.exe`
+
+### 3. PowerShell Script Block Logging (Event ID 4104)
+If enabled, captures the exact command: `Set-MpPreference -DisableRealtimeMonitoring $true`
+
+### 4. Prefetch (Windows 10/11)
+Executable run traces in `C:\Windows\Prefetch\`

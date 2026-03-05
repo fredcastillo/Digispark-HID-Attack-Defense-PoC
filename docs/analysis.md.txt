@@ -1,0 +1,24 @@
+🇪🇸 **Español** | 🇬🇧 [English](analysis-EN.md)
+
+# Análisis Técnico y Forense
+
+## Artefactos Forenses (DFIR)
+
+Este ataque deja rastros identificables en sistemas Windows:
+
+### 1. UserAssist (Registro)
+Ubicación: `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{GUID}\Count`
+
+Características clave:
+- Los nombres de los programas están codificados en **ROT13**
+- `powershell.exe` aparece como `cbjrefuryy.rkr`
+- Incluye contador de ejecuciones y marca de tiempo
+
+### 2. Event ID 4688 (Creación de procesos)
+Registra cuando `powershell.exe` es creado como proceso hijo de `explorer.exe`
+
+### 3. PowerShell Script Block Logging (Event ID 4104)
+Si está habilitado, captura el comando exacto: `Set-MpPreference -DisableRealtimeMonitoring $true`
+
+### 4. Prefetch (Windows 10/11)
+Rastros de ejecución en `C:\Windows\Prefetch\`
