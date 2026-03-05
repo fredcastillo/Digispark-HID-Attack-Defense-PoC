@@ -1,3 +1,4 @@
+🇪🇸 **Español** | 🇬🇧 [English](README-EN.md)
 
 # Digispark HID Attack - Proof of Concept
 
