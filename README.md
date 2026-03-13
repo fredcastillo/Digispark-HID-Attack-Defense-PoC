@@ -221,6 +221,7 @@ En el video se puede observar:
 #### 👨‍💻 Autor
 
 **Fred Castillo**  
+*Estudiante de Tecnólogo en Seguridad Informática*  
 *Aspirante a Red Team | Seguridad Ofensiva*
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Fred%20Castillo-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/fredcastillo11/)
